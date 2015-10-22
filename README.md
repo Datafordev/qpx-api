@@ -1,6 +1,6 @@
 # qpx-api
 
-[![CI Status](http://img.shields.io/travis/timbodeit/qpx-api?style=flat)](https://travis-ci.org/timbodeit/qpx-api)
+[![CI Status](https://travis-ci.org/timbodeit/qpx-api.svg)](https://travis-ci.org/timbodeit/qpx-api)
 
 qpx-api is a simple Haskell wrapper around Googles QPX Express flight search API.
 
