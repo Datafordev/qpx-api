@@ -15,11 +15,12 @@ matrix:
 
 before_install:
  - export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH
-
-install:
  - cabal --version
  - echo "$(ghc --version) [$(ghc --print-project-git-commit-id 2> /dev/null || echo '?')]"
  - travis_retry cabal update
+ - cabal install hlint
+
+install:
  # Install modified version of aeson (see bos/aeson#302)
  - git clone "https://github.com/timbodeit/aeson.git"
  - (cd aeson; git checkout allow-hhmm-time)
@@ -34,6 +35,7 @@ script:
  - cabal test
  - cabal check
  - cabal sdist   # tests that a source-distribution can be generated
+ - hlint .
 
 # Check that the resulting source distribution can be built & installed.
 # If there are no other `.tar.gz` files in `dist`, this can be even simpler:
