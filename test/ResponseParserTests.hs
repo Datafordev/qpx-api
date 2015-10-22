@@ -25,7 +25,8 @@ tests = return [
                , makeTest "SegmentParseTest" testSegment
                , makeTest "SliceParseTest" testSlice
                , makeTest "TripOptionParseTest" testTripOption
-               , makeTest "ResponsParseTest" testResponse
+               , makeTest "ResponseParseTest" testResponse
+               , makeTest "MinResponseParseTest" testMinResponse
                ]
 
 testCabinType :: IO Progress
@@ -84,3 +85,11 @@ testResponse = do
   return $ Finished $ case response' of
           Just _ -> Pass
           _ -> Fail "Parsing Response failed"
+
+testMinResponse :: IO Progress
+testMinResponse = do
+  testResponseFixture <- readFile "test-fixtures/example_response.min.json"
+  let response' = decode (cs testResponseFixture) :: Maybe Response
+  return $ Finished $ case response' of
+          Just _ -> Pass
+          _ -> Fail "Parsing Minified Response failed"
