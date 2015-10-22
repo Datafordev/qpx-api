@@ -11,7 +11,7 @@ data PassengerList = PassengerList { _adultCount        :: Int
                                    , _infantInSeatCount :: Int
                                    , _childCount        :: Int
                                    , _seniorCount       :: Int
-                                   }
+                                   } deriving (Show)
 
 makeLenses ''PassengerList
 

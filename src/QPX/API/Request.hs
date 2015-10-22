@@ -4,7 +4,7 @@
 
 -- TODO: This is probably not all the lenses
 module QPX.API.Request ( Request(..)
-                       , slice
+                       , slices
                        , passengers
                        , solutions
                        , refundable
@@ -25,20 +25,20 @@ import           QPX.API.Request.Slice         as X
 import           QPX.API.Request.TimeRange     as X
 import           QPX.API.Types.CabinType       as X
 
-data Request = Request { _slice        :: [Slice]       -- The list of slices
+data Request = Request { _slices       :: [Slice]       -- The list of slices
                        , _passengers   :: PassengerList -- The list of passengers
                        , _solutions    :: Int           -- Number of solutions to return
                        , _refundable   :: Bool          -- Only search for refundable flights
                        , _maximumPrice :: Maybe Float   -- Optional: The maximum price of flights to return
                        , _saleCountry  :: Maybe String  -- Optional: The country of sale (e.g. US)
-                       }
+                       } deriving (Show)
 
 makeLenses ''Request
 
 instance ToJSON Request where
   toJSON request = object [ "request" .= request' ]
     where request' = object $
-                      [ "slice"      .= (request ^. slice)
+                      [ "slice"      .= (request ^. slices)
                       , "passengers" .= (request ^. passengers)
                       , "solutions"  .= (request ^. solutions)
                       , "refundable" .= (request ^. refundable)

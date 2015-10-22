@@ -9,7 +9,7 @@ import           Data.Time.LocalTime      (TimeOfDay, todHour, todMin)
 import           QPX.API.Request.Internal
 
 data TimeRange = TimeRange { _earliestTime :: Maybe TimeOfDay
-                           , _latestTime   :: Maybe TimeOfDay }
+                           , _latestTime   :: Maybe TimeOfDay } deriving (Show)
 
 makeLenses ''TimeRange
 

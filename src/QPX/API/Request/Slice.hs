@@ -22,7 +22,7 @@ data Slice = Slice { _origin                 :: String
                    , _permittedCarriers      :: Maybe [String]
                    , _prohibitedCarriers     :: Maybe [String]
                    , _maxConnectionDuration  :: Maybe Int
-                   }
+                   } deriving (Show)
 makeLenses ''Slice
 
 instance ToJSON Slice where
