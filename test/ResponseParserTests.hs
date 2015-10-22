@@ -5,17 +5,8 @@ module ResponseParserTests where
 import           Data.Aeson
 import           Data.String.Conversions
 import           Distribution.TestSuite
+import           MakeTest
 import           QPX.API.Response
-
-makeTest :: String -> IO Progress -> Test
-makeTest name' run' = Test testInstance
-  where testInstance = TestInstance
-            { run = run'
-            , name = name'
-            , tags = []
-            , options = []
-            , setOption = \_ _ -> Right testInstance
-            }
 
 tests :: IO [Test]
 tests = return [
