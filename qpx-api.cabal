@@ -4,6 +4,8 @@
 name:                qpx-api
 version:             0.1.0.0
 synopsis:            Haskell wrapper for Googles QPX Express API
+description:         Haskell wrapper for Googles QPX Express API
+category:            Network APIs
 homepage:            https://github.com/timbodeit/qpx-api
 license:             MIT
 license-file:        LICENSE
@@ -11,6 +13,10 @@ author:              Tim Bodeit
 maintainer:          tim@bodeit.com
 build-type:          Simple
 cabal-version:       >=1.10
+
+source-repository head
+  type:     git
+  location: https://github.com/timbodeit/qpx-api/
 
 library
   ghc-options:         -Wall
@@ -45,9 +51,9 @@ test-suite tests
   test-module:         Tests
   other-modules:       ResponseParserTests
   hs-source-dirs:      test
-  build-depends:       Cabal >= 1.9.2
+  build-depends:       Cabal >= 1.22.0
                      , aeson
-                     , base >=4.7 && <4.9
+                     , base >=4.8 && <4.9
                      , directory
                      , qpx-api
                      , string-conversions
